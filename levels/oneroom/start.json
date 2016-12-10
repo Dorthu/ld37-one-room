@@ -1,0 +1,42 @@
+{
+    "player_start": {
+        "pos": { "x": 3, "z": 3 },
+        "facing": 0
+    },
+    "level": [
+            [null,{"type":"wall","mats":["wallpaper","ceiling"],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_window",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper","ceiling"],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_window",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper","ceiling"],"desc":"editor created this"}],
+            [{"type":"wall","mats":["wallpaper_door","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor_rug","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper",null],"desc":"editor created this"}],
+            [null,{"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this","extra":{"object":{"type":"solid","mats":["lamp",null],"desc":null}}},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"}],
+            [null,{"type":"wall","mats":["wallpaper","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this","extra":{"object":{"type":"fobj","mats":["dresser",null],"desc":null,"extra":{"zways":true}}}},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper",null],"desc":"editor created this"}],
+            [null,null,{"type":"wall","mats":["wallpaper",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_tear",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"}]
+    ],
+    "persisted": {
+    },
+    "dialog": {
+    },
+    "events": {
+    }
+}

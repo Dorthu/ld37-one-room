@@ -90,7 +90,7 @@ const switch_level = function(info) {
     light = null;
     skybox = null;
 
-    console.log("Switching leve to "+info.to);
+    console.log("Switching level to "+info.to);
     grid = level_loader.load_level(info.to);
     console.log("Player class:" );
     console.log(player_class);
@@ -120,7 +120,7 @@ const switch_level = function(info) {
     }
 };
 
-let toLevel = store_get_global("clevel", 'levels/test2/simple');
+let toLevel = store_get_global("clevel", 'levels/oneroom/start');
 let initial = true;
 let player_pos = { x: 1, z: 1 };
 let player_facing = 2;

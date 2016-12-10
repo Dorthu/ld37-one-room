@@ -1,14 +1,17 @@
-# First Person RPG
+# ONE ROOM
 
-A WebGL-powered, turn based RPG. Built on top of Three.js, webpack, npm, sass, and probably more.
-Presently in heavy development, but leaning toward a thoughtful combat system and a focus on
-exploration and investigation.  All assets are created in [Pixly](http://pixly.meltinglogic.com/forum/index.php)
-and GIMP.
+This is a kindof-submission to [Ludum Dare 37](https://ldjam.com), except that I have no time this weekend
+so I probably won't submit it.  But I might finish it, and that's the whole point, right?
 
-### How to Play (easy mode)
+The theme is *ONE ROOM*, and I figured I could get something done if I started from something I had
+(which is chill with the [jam rules](http://ludumdare.com/compo/rules/)), so this is a fork of
+[my es6-crpg code](https://github.com/dorthu/es6-crpg).
 
-I have this hosted at [http://rpg-test.dorthu.com](http://rpg-test.dorthu.com).
+#### How to Play
 
+See Developer Mode below.  I might host this on [itch.io](https://itch.io) if I finish it.
+
+The rest of this document is unedited from the upstream repo.
 
 #### Controls
 
