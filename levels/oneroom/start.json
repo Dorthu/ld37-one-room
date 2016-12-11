@@ -30,7 +30,8 @@
         {"type":"wall","mats":["wallpaper",null],"desc":"editor created this"}],
             [null,null,{"type":"wall","mats":["wallpaper",null],"desc":"editor created this"},
         {"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"},
-        {"type":"wall","mats":["wallpaper_tear",null],"desc":"editor created this"},
+        {"type":"wall","mats":["wallpaper_tear",null],"desc":"editor created this", "extra": { "object": { 
+            "type": "lostrigger" }}},
         {"type":"wall","mats":["wallpaper_light",null],"desc":"editor created this"}]
     ],
     "persisted": {

@@ -19,6 +19,7 @@ import ConditionalPickup from './game/conditional_pickup'
 import ConditionalLockedDoor from './game/conditional_locked_door'
 import EventSpace from './game/event_space'
 import Switch from './switch'
+import LosTrigger from './game/los_trigger'
 
 export const obj_map = {
     'space':    Space,
@@ -39,6 +40,7 @@ export const obj_map = {
     'clocked': ConditionalLockedDoor,
     'espace': EventSpace,
     'switch': Switch,
+    'lostrigger': LosTrigger,
 }
 
 ///why is this a class?

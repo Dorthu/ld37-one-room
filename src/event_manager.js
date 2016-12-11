@@ -54,6 +54,10 @@ class EventManager {
         this.elm.dispatchEvent(new CustomEvent('player_moved', { detail: { loc: player.loc } }));
     }
 
+    dispatchPlayerTurned(player) {
+        this.elm.dispatchEvent(new CustomEvent('player_turned', { detail: { facing: player.facing } }));
+    }
+
     dispatchPassTurn() { 
         this.elm.dispatchEvent(new CustomEvent('pass_turn', {}));
     }

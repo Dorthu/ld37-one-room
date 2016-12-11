@@ -150,6 +150,7 @@ class Player {
             if(this.facing > 3) { this.facing = 0; }
             this.logbox.add_message('faces '+dirs[this.facing]);
             this.position_camera();
+            this.grid.event_manager.dispatchPlayerTurned(this);
             this._save_move();
         } else if(event.keyCode == 38) {
             this.move();
@@ -158,6 +159,7 @@ class Player {
             if(this.facing < 0) { this.facing = 3; }
             this.logbox.add_message('faces '+dirs[this.facing]);
             this.position_camera();
+            this.grid.event_manager.dispatchPlayerTurned(this);
             this._save_move();
         } else if(event.keyCode == 40) {
             this.move(true);
