@@ -1,0 +1,59 @@
+{
+    "player_start": {
+        "pos": { "x": 0, "z": 0 },
+        "facing": 0
+    },
+    "level":[
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"wall","mats":["brick",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"wall","mats":["brick",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},null,{"type":"wall","mats":["brick",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"wall","mats":["debug",null],"desc":"editor created this", "extra": { "object": {
+                "type": "lostrigger"  
+            }}},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},null,{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},null,{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"wall","mats":["brick",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"wall","mats":["brick",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}],
+        [{"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"},
+            {"type":"enclosed","mats":["sidewalk",null],"desc":"editor created this"}]
+    ],
+    "persisted": {
+    },
+    "dialog": {
+    },
+    "events": {
+    }
+}

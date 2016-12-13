@@ -120,7 +120,7 @@ const switch_level = function(info) {
     }
 };
 
-let toLevel = store_get_global("clevel", 'levels/oneroom/start');
+let toLevel = store_get_global("clevel", 'levels/oneroom/test-los');
 let initial = true;
 let player_pos = { x: 1, z: 1 };
 let player_facing = 2;
