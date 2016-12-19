@@ -58,6 +58,10 @@ class LosTrigger extends GridObject {
         console.log("in fov!");
 
         /// find the line between them and us, and then translate it into grid spaces
+        const divisor = Math.max(delta_loc.x, delta_loc.z);
+        const slope = { x: delta_loc.x / divisor, z: delta_loc.z / divisor };
+        console.log(`slope is ${slope}`);
+        const cpos = { x: player_point.x + slope.x, z: player_point.z + slope.z };
 
         /// trace the line across grid spaces to see if there's any obstruction
 
