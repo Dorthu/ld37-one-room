@@ -14,12 +14,15 @@ class GridObject {
         this.object = null;
 
         if(extra && extra['object']) {
+            console.log(`Attempting to construct ${extra['object']}`);
+            console.log(extra['object']);
             this.object = this.make_object(this.extra.object.type,
                     extra.object['mats'], extra.object['desc'], extra.object['extra']);
         }
     }
 
     make_object(cname, mats, desc, extra) {
+        console.log(obj_map);
         return new obj_map[cname](this.grid, this.loc, mats, desc, extra);
     }
 

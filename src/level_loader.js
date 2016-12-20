@@ -21,6 +21,7 @@ import EventSpace from './game/event_space'
 import Switch from './switch'
 import LosTrigger from './game/los_trigger'
 import DropSpace from './game/drop_space'
+import CubeWall from './game/cube_wall'
 
 export const obj_map = {
     'space':    Space,
@@ -43,6 +44,7 @@ export const obj_map = {
     'switch': Switch,
     'lostrigger': LosTrigger,
     'dropspace': DropSpace,
+    'cube_wall': CubeWall,
 }
 
 ///why is this a class?

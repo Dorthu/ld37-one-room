@@ -31,7 +31,7 @@
             {"type":"wall","mats":["wallpaper",null],"desc":"editor created this"}],
         [null,{"type":"wall","mats":["wallpaper",null],"desc":"editor created this"},
             {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this","extra":{"object":{"type":"fobj","mats":["dresser","ceiling"],"desc":null,"extra":{"zways":true}}}},
-            {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
+            {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this","extra":{"object":{"type":"cube_wall","mats":["debug","debug-2"]}}},
             {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
             {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
             {"type":"enclosed","mats":["woodfloor","ceiling"],"desc":"editor created this"},
