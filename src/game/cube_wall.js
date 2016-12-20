@@ -17,6 +17,10 @@ class CubeWall extends GridObject {
             new THREE.Mesh(geo2, m2)
         ];
 
+        if(extra && extra['rot'] == 'z') {
+                this.meshes = [ this.meshes[1], this.meshes[0], this.meshes[3], this.meshes[2] ];
+        }
+
         for (let i=0; i<4; i++) {
             let m = this.meshes[i];
             let c = {};
@@ -24,8 +28,15 @@ class CubeWall extends GridObject {
 
             let mod = 1;
             if (i > 1) { mod = -1; }
-            if (i%2) { c.x += .5 * mod; m.rotation.y = Math.PI / 2 * mod;}
-            else { c.z += .5 * mod; m.rotation.y = ( mod > 0 ? 0 : Math.PI * mod ); }
+
+            console.log(`rot is ${extra['rot']}`);
+            if(extra && extra['rot'] == 'z') {
+                if (i%2) { c.x += .08 * mod; m.rotation.y = Math.PI / 2 * mod;}
+                else { c.z += .5 * mod; m.rotation.y = ( mod > 0 ? 0 : Math.PI * mod ); }
+            } else {
+                if (i%2) { c.x += .5* mod; m.rotation.y = Math.PI / 2 * mod;}
+                else { c.z += .08 * mod; m.rotation.y = ( mod > 0 ? 0 : Math.PI * mod ); }
+            }
 
             c = this.grid.translate(c);
             m.position.x = c.x;
