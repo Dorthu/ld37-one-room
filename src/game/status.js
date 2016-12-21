@@ -13,8 +13,8 @@ class PlayerStatus {
     constructor(health, load=true) {
         this.section = document.getElementById('player_status');
         this.health = { name: 'Health', value: health, max: 100, color: 'green', type: 'bar' };
-        this.chambers = { name: 'Chambers', value: 6, max: 6, type: 'chambers' };
-        this.ammo = { name: 'Ammo', value: 4, max: 12, type: 'ammobar' };
+        this.chambers = null; //{ name: 'Chambers', value: 6, max: 6, type: 'chambers' };
+        this.ammo = null; //{ name: 'Ammo', value: 4, max: 12, type: 'ammobar' };
         this.stats = [
             this.health,
         ];
@@ -27,8 +27,12 @@ class PlayerStatus {
         for(let stat of this.stats) {
             html += this._get_status_bar(stat.name, 100*(stat.value/stat.max), stat.color);
         }
-        html += "<div>"+this._get_chambers(this.chambers.value, show_anim);
-        html += this._get_ammo(this.ammo.value)+"</div>";
+        if(this.chambers) {
+            html += "<div>"+this._get_chambers(this.chambers.value, show_anim);
+        }
+        if(this.ammo) {
+            html += this._get_ammo(this.ammo.value)+"</div>";
+        }
 
         this.section.innerHTML = html;
     }
@@ -62,15 +66,15 @@ class PlayerStatus {
 
     save() {
         store_set_global("player-health", this.health.value);
-        store_set_global("player-chambers", this.chambers.value);
-        store_set_global("player-ammo", this.ammo.value);
+        //store_set_global("player-chambers", this.chambers.value);
+        //store_set_global("player-ammo", this.ammo.value);
     }
 
     load() {
         if(store_get_global("player-health")) {
             this.health.value = store_get_global("player-health");
-            this.chambers.value = store_get_global("player-chambers");
-            this.ammo.value = store_get_global("player-ammo");
+            //this.chambers.value = store_get_global("player-chambers");
+            //this.ammo.value = store_get_global("player-ammo");
         }
     }
 }

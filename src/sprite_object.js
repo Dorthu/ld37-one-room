@@ -21,6 +21,8 @@ class SpriteObject extends GridObject {
         this.meshes[0].position.z = pos.z;
 
         this.grid.scene.add(this.meshes[0]);
+
+        this._fine_tune();
     }
 
     static occupies() { return true; }
