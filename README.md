@@ -1,7 +1,7 @@
 # ONE ROOM
 
-This is a kindof-submission to [Ludum Dare 37](https://ldjam.com), except that I have no time this weekend
-so I probably won't submit it.  But I might finish it, and that's the whole point, right?
+This is ~~a kindof-submission to~~ **inspired by** [Ludum Dare 37](https://ldjam.com), ~~except that I have no time
+this weekend so I probably won't submit it~~ **and I am trying to complete it during a 2-week Chrsitmas vacation**.
 
 The theme is *ONE ROOM*, and I figured I could get something done if I started from something I had
 (which is chill with the [jam rules](http://ludumdare.com/compo/rules/)), so this is a fork of
