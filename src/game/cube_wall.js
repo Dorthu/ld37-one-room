@@ -46,6 +46,8 @@ class CubeWall extends GridObject {
             this.grid.scene.add(m);
         }
     }
+
+    static occupies() { return true; }
 }
 
 export default CubeWall;

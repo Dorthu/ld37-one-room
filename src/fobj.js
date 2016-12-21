@@ -24,6 +24,8 @@ class FlatObject extends SolidObject {
         }
 
         this.grid.scene.add(this.meshes[0]);
+
+        this._fine_tune();
     }
 
     static occupies() { return true; }
