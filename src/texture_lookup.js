@@ -53,7 +53,7 @@ function load_special() {
     let cube_wall_cap = load_texture('resources/special/cube-wall-cap.png');
     cube_wall_cap.wrapS = THREE.RepeatWrapping;
     cube_wall_cap.wrapT = THREE.RepeatWrapping;
-    cube_wall_cap.repeat.set(.333,.666);
+    cube_wall_cap.repeat.set(.166,.666);
     mat_map['cube-wall-cap'] = new THREE.MeshLambertMaterial({map: cube_wall_cap, side: THREE.SingleSide});
 
 }
