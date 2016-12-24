@@ -26,6 +26,7 @@ const resources = require('./loaders/directory_loader!./empty');
 
 export function init_textures() {
     mat_map={};
+    console.log("I was called");
     for(let cdir of Object.keys(resources)) {
         for(let cimg of resources[cdir]) {
             let ikey = cimg.substring(0, cimg.length-4); //lop off extension
@@ -33,6 +34,28 @@ export function init_textures() {
             mat_map[ikey] = make_material(tex, cdir);
         }
     }
+    load_special();
+}
+
+function load_special() {
+    /*
+        This is a special-case catchall where we load textures that need specific metadata.
+        The resources/special folder is otherwise ignored, so these *must* be loaded here to
+        be referenced in a level.  TODO: These are almost certainly game specific, so move this to game?
+    */
+
+    let cube_wall = load_texture('resources/special/cube-wall.png');
+    cube_wall.wrapS = THREE.RepeatWrapping;
+    cube_wall.wrapT = THREE.RepeatWrapping;
+    cube_wall.repeat.set(1,.666);
+    mat_map['cube-wall'] = new THREE.MeshLambertMaterial({map: cube_wall, side: THREE.SingleSide});
+
+    let cube_wall_cap = load_texture('resources/special/cube-wall-cap.png');
+    cube_wall_cap.wrapS = THREE.RepeatWrapping;
+    cube_wall_cap.wrapT = THREE.RepeatWrapping;
+    cube_wall_cap.repeat.set(.333,.666);
+    mat_map['cube-wall-cap'] = new THREE.MeshLambertMaterial({map: cube_wall_cap, side: THREE.SingleSide});
+
 }
 
 export function init_textures_old() {
