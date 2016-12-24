@@ -23,6 +23,7 @@ import LosTrigger from './game/los_trigger'
 import DropSpace from './game/drop_space'
 import CubeWall from './game/cube_wall'
 import SpriteObject from './sprite_object'
+import DoubleCubeWall from './game/double_cube_wall'
 
 export const obj_map = {
     'space':    Space,
@@ -46,6 +47,7 @@ export const obj_map = {
     'lostrigger': LosTrigger,
     'dropspace': DropSpace,
     'cube_wall': CubeWall,
+    'double_cube_wall': DoubleCubeWall,
     'sprite': SpriteObject,
 }
 

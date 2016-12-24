@@ -10,6 +10,9 @@ class CubeWall extends GridObject {
         const geo2 = new THREE.PlaneGeometry(1,4);
         const m = get_material(mats[0]);
         const m2 = get_material(mats[1]);
+
+        this.solid = true;
+
         this.meshes = [
             new THREE.Mesh(geo, m),
             new THREE.Mesh(geo2, m2),
