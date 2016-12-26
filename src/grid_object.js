@@ -64,6 +64,10 @@ class GridObject {
                 this.meshes[0].position.x += this.extra['offset-x'];
             }
 
+            if(this.extra['offset-y']) {
+                this.meshes[0].position.y += this.extra['offset-y'];
+            }
+
             if(this.extra['offset-z']) {
                 this.meshes[0].position.z += this.extra['offset-z'];
             }

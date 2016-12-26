@@ -103,9 +103,11 @@
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"enclosed","mats":["woodfloor",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
@@ -169,9 +171,11 @@
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"enclosed","mats":["woodfloor",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
@@ -235,9 +239,11 @@
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"enclosed","mats":["woodfloor",null],"desc":"editor created this"},
-            {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
+            {"type":"dropspace","mats":["water",null],"desc":"editor created this","extra":{"object":{
+                "type":"sprite","mats":["streetlight"],"extra":{"offset-y":-3,"solid":true}}}},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
             {"type":"dropspace","mats":["water",null],"desc":"editor created this"},
