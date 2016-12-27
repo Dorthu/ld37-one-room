@@ -14,12 +14,14 @@ class EventSpace extends Space {
                 this.skip = true;
             }
         }
+        console.log(`once: ${this.once}`);
 
         if(!this.skip)
             this.grid.event_manager.subscribe('player_moved', e => this.trigger(e), this);
     }
 
     trigger(event) {
+        console.log("hit espace");
         if(!this.skip && event.detail.loc.x == this.loc.x && event.detail.loc.z == this.loc.z) {
             this.grid.event_manager.dispatchArbitrary(this.event, this.event_data);
             

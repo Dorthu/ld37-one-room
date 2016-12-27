@@ -37,6 +37,8 @@ class DialogController {
             this.cbox = new DialogChoice(c['prompt'], left ? img : null, !left ? img : null);
         } else if(c.speaker == 'player') {
             this.cbox = DialogBox.player_dialog(c.msg, c.emote);
+        } else if(!c['speaker']) {
+            this.cbox = DialogBox.no_speaker_dialog(c.msg);
         } else {
             this.cbox = DialogBox.character_dialog(c.msg, c.speaker, c.emote);
         }

@@ -33,6 +33,10 @@ class DialogBox {
         return new DialogBox(msg, character+'/'+emote);
     }
 
+    static no_speaker_dialog(msg) {
+        return new DialogBox(msg, null, null);
+    }
+
     remove() {
         this.parentNode.removeChild(this.root);
     }
