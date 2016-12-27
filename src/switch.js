@@ -8,11 +8,11 @@ class Switch extends GridObject {
         this.once = extra['once'];
         this.key = extra['key'];
 
-        this.useable = true;
+        this.usable = true;
 
         if(this.once) {
             if(this.grid.level.get_value(this.key) !== true) {
-                this.useable = false;
+                this.usable = false;
             }
         }
     }
@@ -20,7 +20,7 @@ class Switch extends GridObject {
     use(player) {
         this.grid.event_manager.dispatchArbitrary(this.event);
         if(this.once) {
-            this.useable = false;
+            this.usable = false;
             this.grid.level.set_value(this.key, false);
         }
     }

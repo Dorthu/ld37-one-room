@@ -17,6 +17,11 @@ class GridObject {
             this.object = this.make_object(this.extra.object.type,
                     extra.object['mats'], extra.object['desc'], extra.object['extra']);
         }
+
+        if(extra && extra['trigger']) {
+            console.log(`Got trigger ${extra['trigger']}`);
+            this.usable = true;
+        }
     }
 
     make_object(cname, mats, desc, extra) {
@@ -38,6 +43,14 @@ class GridObject {
 
     tick(delta) {
         ///something to do on every frame?
+    }
+
+    use(player) {
+        console.log("used");
+        if(this.usable) {
+            console.log("and did something even");
+            this.grid.event_manager.dispatchArbitrary(this.extra['trigger']);
+        }
     }
 
     destroy() {

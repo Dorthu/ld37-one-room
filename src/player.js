@@ -103,7 +103,7 @@ class Player {
         let obj = this.grid.get(target.x, target.z);
 
         this.logbox.add_message('looks..');
-        if(obj && obj.object && obj.object.desc) { 
+        if(obj && obj.object && obj.object.desc) {
             this.logbox.add_message(obj.object.desc);
         }
         else if(obj && obj.desc) {
@@ -123,7 +123,7 @@ class Player {
         let obj = this.grid.get(target.x, target.z);
 
         this.logbox.add_message('uses..');
-        if(obj && obj.object && obj.object.useable) { 
+        if(obj && obj.object && obj.object.usable) {
             obj.object.use(this);
         }
     }

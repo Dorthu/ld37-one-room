@@ -7,7 +7,7 @@ class SpriteObject extends GridObject {
     constructor(grid, loc, mats, desc, extra) {
         super(grid, loc, mats, desc, extra);
 
-        this.useable = false;
+        this.usable = false;
 
         this.meshes = [ new THREE.Sprite(get_material(mats[0])) ];
         this.meshes[0].scale.set(6, 6, 1);

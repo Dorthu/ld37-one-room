@@ -6,7 +6,7 @@ class Pickup extends SpriteObject {
         super(grid, loc, mats, desc, extra);
         
         this.name = extra.name;
-        this.useable = true;
+        this.usable = true;
     }
 
     use(player) {
