@@ -77,7 +77,7 @@
     ],
     "persisted": {
         "got_phone": false,
-        "start": false
+        "start": true
     },
     "dialog": {
         "start": [
@@ -99,7 +99,7 @@
         ]
     },
     "events": {
-        "opening-blurb": {
+        "level-start": {
             "type": "dialog",
             "dialog": "start"
         },

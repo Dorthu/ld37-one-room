@@ -18,6 +18,8 @@ class EventSpace extends Space {
 
         if(!this.skip)
             this.grid.event_manager.subscribe('player_moved', e => this.trigger(e), this);
+        else
+            console.log(`skipped while looking for key ${this.key} (was ${this.grid.level.get_value(this.key)})`);
     }
 
     trigger(event) {

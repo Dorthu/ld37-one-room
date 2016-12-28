@@ -118,6 +118,8 @@ const switch_level = function(info) {
     } else {
         tc = new GameTurnController(grid);
     }
+
+    grid.event_manager.dispatchArbitrary('level-start');
 };
 
 let toLevel = store_get_global("clevel", 'levels/oneroom/test-los');
