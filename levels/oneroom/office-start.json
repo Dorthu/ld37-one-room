@@ -84,7 +84,7 @@
             { "msg": "The last Friday in December." },
             { "msg": "Everyone else in this office is on vacation.." },
             { "msg": "..." },
-            { "speaker": "phone", "emote": "default", "msg": "*ring ring*" },
+            { "speaker": "phone", "msg": "*ring ring*" },
             { "msg": "..and I bet that's my phone ringing" }
         ],
         "phone-call": [
@@ -94,7 +94,7 @@
             { "speaker": "phone", "msg": "Good, good.  Don't think that just because you're the only person in the office you can slack off all day." },
             { "msg": "Of course not sir." },
             { "speaker": "phone", "msg": "Great, thanks!" },
-            { "speaker": "phone", "msg": "*click*" },
+            { "speaker": "phone", "emote": "loud", "msg": "*click*" },
             { "msg": "*sigh*" },
             { "msg": "..I'm gonna need some coffee for this." }
         ],

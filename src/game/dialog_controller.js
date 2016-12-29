@@ -33,7 +33,8 @@ class DialogController {
         let c = this.dialog[this.cur++];
         if(c['prompt']) {
             let left = c['speaker'] != 'player';
-            let img = c['speaker']+'/'+c['emote'];
+            console.log(`c['emote']`);
+            let img = c['speaker']+'/'+( c['emote'] ? c['emote'] : 'default');
             this.cbox = new DialogChoice(c['prompt'], left ? img : null, !left ? img : null);
         } else if(c.type == 'event') {
             this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
@@ -43,7 +44,7 @@ class DialogController {
         } else if(!c['speaker']) {
             this.cbox = DialogBox.no_speaker_dialog(c.msg);
         } else {
-            this.cbox = DialogBox.character_dialog(c.msg, c.speaker, c.emote);
+            this.cbox = DialogBox.character_dialog(c.msg, c.speaker, ( c['emote'] ? c.emote : 'default' ));
         }
     }
 
