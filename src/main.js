@@ -90,10 +90,7 @@ const switch_level = function(info) {
     light = null;
     skybox = null;
 
-    console.log("Switching level to "+info.to);
     grid = level_loader.load_level(info.to);
-    console.log("Player class:" );
-    console.log(player_class);
     overlay.grid = grid;
 
     /// keep compatibility with simple level format (for now)
@@ -122,7 +119,7 @@ const switch_level = function(info) {
     grid.event_manager.dispatchArbitrary('level-start');
 };
 
-let toLevel = store_get_global("clevel", 'levels/oneroom/test-los');
+let toLevel = store_get_global("clevel", 'levels/oneroom/office-start');
 let initial = true;
 let player_pos = { x: 1, z: 1 };
 let player_facing = 2;

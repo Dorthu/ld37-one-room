@@ -24,7 +24,7 @@ class DialogController {
                 this.overlay.add_dialog(this.overlay.grid.level.get_dialog(result['target']));
                 return;
             } else if(result['type'] == 'event') {
-                this.overlay.grid.event_manager.dispatchArbitrary(result['target']);
+                this.overlay.grid.event_manager.dispatchArbitrary(result['target'], result['detail']);
             }
         }
 
@@ -35,6 +35,9 @@ class DialogController {
             let left = c['speaker'] != 'player';
             let img = c['speaker']+'/'+c['emote'];
             this.cbox = new DialogChoice(c['prompt'], left ? img : null, !left ? img : null);
+        } else if(c.type == 'event') {
+            this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
+            this.overlay.grid.event_manager.dispatchArbitrary(c['target'], c['detail']);
         } else if(c.speaker == 'player') {
             this.cbox = DialogBox.player_dialog(c.msg, c.emote);
         } else if(!c['speaker']) {

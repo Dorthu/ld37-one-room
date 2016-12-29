@@ -67,7 +67,7 @@ class EventManager {
     }
 
     dispatchArbitrary(name, extra={}) {
-        this.elm.dispatchEvent(new CustomEvent(name));
+        this.elm.dispatchEvent(new CustomEvent(name, { detail: { data: extra } }));
     }
 }
 
