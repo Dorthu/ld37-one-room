@@ -1,9 +1,8 @@
+import { store_get, store_set } from './persistence_manager'
 /*
 A nice interface for events between objects.  Why not use javascript's native event thing?
 ..like really, tell me why I shouldn't do that, I have no idea.
 */
-let uid = 0;
-
 class EventManager {
     constructor() { 
         this.elm = document.createElement('div');

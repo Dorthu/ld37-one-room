@@ -1,3 +1,5 @@
+import { store_get, store_set, store_set_prefix, store_set_global } from '../persistence_manager'
+
 class EventListener {
     constructor(grid, triggers) {
         this.grid = grid;
@@ -9,13 +11,28 @@ class EventListener {
 
     handle(event) {
         let cur = this.triggers[event.type];
-        if(cur) {
-            if(cur['type'] == 'dialog') {
-                this.grid.player.overlay.add_dialog(this.grid.level.get_dialog(cur['dialog']));
-            }
-        } else {
+        if(!cur) {
             console.log("Event Listener got unexpected callback for event!");
             console.log(event);
+            return;
+        }
+
+        if(cur['requirements']) {
+            for(let r of cur.requirements) {
+                if(!store_get(r)) { return; }
+            }
+        }
+
+        if(cur['once']) {
+            if(store_get(event.type)) { return; }
+        }
+
+        if(cur['once'] || cur['set-on-fire']) {
+            store_set(event.type, true);
+        }
+
+        if(cur['type'] == 'dialog') {
+            this.grid.player.overlay.add_dialog(this.grid.level.get_dialog(cur['dialog']));
         }
     }
 }

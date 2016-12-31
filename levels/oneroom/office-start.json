@@ -124,7 +124,7 @@
             "type": "dialog",
             "dialog": "no-coffee",
             "once": true,
-            "requirements": [ "got-phone" ]
+            "requirements": [ "phone-call" ]
         }
     }
 }
