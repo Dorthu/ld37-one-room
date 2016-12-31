@@ -27,10 +27,32 @@ class GamePlayer extends Player {
     }
 
     reload() {
+        if(!this.stats['chambers']) { return; }
         if(this.stats.ammo.value > 0 && this.stats.chambers.value < this.stats.chambers.max) {
             this.stats.chambers.value++;
             this.stats.ammo.value--;
             this.stats.update();
+        }
+    }
+
+    show_desc(obj) {
+        this.overlay.add_dialog([ { "msg": obj.desc } ]);
+    }
+
+    context_do() {
+        let tpos = this._point_in_front()
+        let target = this.grid.get(tpos.x, tpos.z);
+
+        if(!target) { return; }
+
+        if(target.object) {
+            if(target.object.usable) {
+                target.object.use(this);
+            } else if(target.object.desc) {
+                this.show_desc(target.object);
+            }
+        } else if(target.desc) {
+            this.show_desc(target);
         }
     }
 
@@ -39,6 +61,9 @@ class GamePlayer extends Player {
         this.has_turn = false;
 
         if(event.keyCode == 32) {
+            this.context_do();
+        }
+       /* if(event.keyCode == 32) {
             shoot(this);
         } else if(event.keyCode == 80) {
             push(this);
@@ -56,8 +81,8 @@ class GamePlayer extends Player {
                 { 'speaker': 'player', 'emote': 'bored', 'msg': "..." },
                 { 'speaker': 'player', 'emote': 'sad', 'msg': "I should stop talking to myself.." }
             ]);
-*/
         }
+*/
         super.input(event);
     }
 }

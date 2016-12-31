@@ -1,5 +1,6 @@
 import DialogBox from './dialog'
 import DialogChoice from './dialog_choice'
+import { store_set } from '../persistence_manager'
 
 class DialogController {
     constructor(overlay, dialog) {
@@ -39,6 +40,9 @@ class DialogController {
         } else if(c.type == 'event') {
             this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
             this.overlay.grid.event_manager.dispatchArbitrary(c['target'], c['detail']);
+        } else if(c.type == 'set') {
+            this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
+            store_set(c.key, c.value);
         } else if(c.speaker == 'player') {
             this.cbox = DialogBox.player_dialog(c.msg, c.emote);
         } else if(!c['speaker']) {

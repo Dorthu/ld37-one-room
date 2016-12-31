@@ -32,7 +32,6 @@ class CubeWall extends GridObject {
             let mod = 1;
             if (i > 1) { mod = -1; }
 
-            console.log(`rot is ${extra['rot']}`);
             if(extra && extra['rot'] == 'z') {
                 if (i%2) { c.x += .08 * mod; m.rotation.y = Math.PI / 2 * mod;}
                 else { c.z += .5 * mod; m.rotation.y = ( mod > 0 ? 0 : Math.PI * mod ); }

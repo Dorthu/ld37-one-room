@@ -19,7 +19,6 @@ class GridObject {
         }
 
         if(extra && extra['trigger']) {
-            console.log(`Got trigger ${extra['trigger']}`);
             this.usable = true;
         }
     }
@@ -46,9 +45,7 @@ class GridObject {
     }
 
     use(player) {
-        console.log("used");
         if(this.usable) {
-            console.log("and did something even");
             this.grid.event_manager.dispatchArbitrary(this.extra['trigger']);
         }
     }
@@ -64,8 +61,6 @@ class GridObject {
         if(this.extra) {
             /// pull configuration from the this.extra
             if(this.extra['solid']) {
-                console.log("it is set:");
-                console.log(this.extra);
                 this.solid = this.extra['solid'];
             }
 

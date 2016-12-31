@@ -6,20 +6,7 @@ class EventSpace extends Space {
         
         this.event = extra['event'];
         this.event_data = extra['event_data'];
-        this.once = this.extra['once'];
-        this.key = this.extra['key'];
-
-        if(this.once) {
-            if(this.grid.level.get_value(this.key) !== true) {
-                this.skip = true;
-            }
-        }
-        console.log(`once: ${this.once}`);
-
-        if(!this.skip)
-            this.grid.event_manager.subscribe('player_moved', e => this.trigger(e), this);
-        else
-            console.log(`skipped while looking for key ${this.key} (was ${this.grid.level.get_value(this.key)})`);
+        this.grid.event_manager.subscribe('player_moved', e => this.trigger(e), this);
     }
 
     trigger(event) {
