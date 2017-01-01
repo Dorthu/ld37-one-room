@@ -10,6 +10,7 @@ class ConditionalPickup extends Pickup {
         
         if(this.grid.level.get_value(this.condition) !== 'true') {
             this.grid.post_load_actions.push(() => this.hide());
+            this.grid.event_manager.subscribe('property_changed', (e) => this.show(e), this);
         }
     }
     
@@ -18,9 +19,14 @@ class ConditionalPickup extends Pickup {
         this.grid.scene.remove(this.meshes[0]);
     }
 
-    show() {
+    show(event) {
+        ///only show if this was an event for us
+        if(!event.detail.data.key == this.condition) { return; }
+        if(!event.detail.data.value === true) { return; }
+
         this.hidden = false;
         this.grid.scene.add(this.meshes[0]);
+        this.grid.event_manager.unsubscribe('property_changed', this);
     }
 
     use(player) {

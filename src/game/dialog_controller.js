@@ -34,7 +34,6 @@ class DialogController {
         let c = this.dialog[this.cur++];
         if(c['prompt']) {
             let left = c['speaker'] != 'player';
-            console.log(`c['emote']`);
             let img = c['speaker']+'/'+( c['emote'] ? c['emote'] : 'default');
             this.cbox = new DialogChoice(c['prompt'], left ? img : null, !left ? img : null);
         } else if(c.type == 'event') {
@@ -43,6 +42,7 @@ class DialogController {
         } else if(c.type == 'set') {
             this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
             store_set(c.key, c.value);
+            this.overlay.grid.event_manager.dispatchArbitrary('property_changed', {'key':c.key,'value':c.value});
         } else if(c.speaker == 'player') {
             this.cbox = DialogBox.player_dialog(c.msg, c.emote);
         } else if(!c['speaker']) {
