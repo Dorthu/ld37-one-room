@@ -9,7 +9,8 @@ The theme is *ONE ROOM*, and I figured I could get something done if I started f
 
 #### How to Play
 
-See Developer Mode below.  I might host this on [itch.io](https://itch.io) if I finish it.
+This is currently hosted on [my personal site](https://oneroom.dorthu.com).
+I might host this on [itch.io](https://itch.io) if I finish it.
 
 The rest of this document is unedited from the upstream repo.
 
