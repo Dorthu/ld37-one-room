@@ -131,7 +131,9 @@
             {"type":"dropspace","mats":["water",null]},
             {"type":"dropspace","mats":["water",null]},
             {"type":"enclosed","mats":["docks",null], "extra": { "object":
-                {"type":"cpickup","mats":["fancy-coffee"],"extra": {"if":"coffee-present","once":true}}}},
+                {"type":"cepickup","mats":["fancy-coffee"],"extra":
+                    {"if":"coffee-present","once":true,"event":"transition_level","event_extra":
+                        {"to":"/levels/oneroom/test-los","player_pos": { "x": 8, "z": 14 }, "player_facing": 1 }}}}},
             {"type":"dropspace","mats":["water",null]},
             {"type":"dropspace","mats":["water",null]},
             {"type":"dropspace","mats":["water",null]},
