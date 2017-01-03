@@ -1,6 +1,7 @@
 import DialogBox from './dialog'
 import DialogChoice from './dialog_choice'
 import { store_set } from '../persistence_manager'
+import InventoryItem from '../inventory_item'
 
 class DialogController {
     constructor(overlay, dialog) {
@@ -43,6 +44,12 @@ class DialogController {
             this.overlay.remove_dialog(); /// TODO - maybe only sometimes?
             store_set(c.key, c.value);
             this.overlay.grid.event_manager.dispatchArbitrary('property_changed', {'key':c.key,'value':c.value});
+        } else if(c.type == 'inventory') {
+            if(c.action == 'remove')
+                this.overlay.grid.player.inventory.remove(c.item);
+            else
+                this.overlay.grid.player.inventory.add_item(new InventoryItem(c.item.name, c.item.icon));
+            this.show();
         } else if(c.speaker == 'player') {
             this.cbox = DialogBox.player_dialog(c.msg, c.emote);
         } else if(!c['speaker']) {

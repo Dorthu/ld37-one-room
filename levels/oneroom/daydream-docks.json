@@ -132,8 +132,7 @@
             {"type":"dropspace","mats":["water",null]},
             {"type":"enclosed","mats":["docks",null], "extra": { "object":
                 {"type":"cepickup","mats":["fancy-coffee"],"extra":
-                    {"if":"coffee-present","once":true,"event":"transition_level","event_extra":
-                        {"to":"/levels/oneroom/office-have-coffee","player_pos": { "x": 6, "z": 1 }, "player_facing": 2 }}}}},
+                    {"if":"coffee-present","once":true,"event":"get-coffee"}}}},
             {"type":"dropspace","mats":["water",null]},
             {"type":"dropspace","mats":["water",null]},
             {"type":"dropspace","mats":["water",null]},
@@ -457,6 +456,11 @@
             { "msg": "..." },
             { "msg": "I miss those days.." },
             { "type": "set", "key": "coffee-present", "value": true }
+        ],
+        "get-coffee": [
+            { "type": "inventory", "action": "add", "item": { "name": "coffee", "icon": "coffee-grounds" } },
+            { "type": "event", "target": "transition_level", "detail":
+                {"to":"/levels/oneroom/office-have-coffee","player_pos": { "x": 6, "z": 1 }, "player_facing": 2 } }
         ]
     },
     "events": {
@@ -465,5 +469,10 @@
             "dialog": "remember-coffee",
             "once": true
         },
+        "get-coffee": {
+            "type": "dialog",
+            "dialog": "get-coffee",
+            "once": true
+        }
     }
 }
