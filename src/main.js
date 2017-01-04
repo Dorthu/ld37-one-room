@@ -71,7 +71,7 @@ inventory.deserialize();
 
 ///tmp for testing
 const skygeo = new THREE.CubeGeometry(500, 500, 500);
-const skymat = get_material('sky');
+const skymat = get_material('nightsky-moon');
 let skybox = null;
 
 ///overlay business is given to the player, and persisted
@@ -103,7 +103,7 @@ const switch_level = function(info) {
     light = new THREE.AmbientLight( 0xA9BEA9 );
     grid.scene.add( light );
     skybox = new THREE.Mesh(skygeo, skymat);
-    skybox.position.y = 200;
+    skybox.position.y = 0;
     grid.scene.add(skybox);
 
     grid.set_scene_change_callback(switch_level);
