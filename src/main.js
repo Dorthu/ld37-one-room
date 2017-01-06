@@ -18,6 +18,7 @@ import TurnController from './turn_controller'
 import GameTurnController from './game/turn_controller'
 import DialogChoice from './game/dialog_choice'
 import { store_init, store_get_global, clear_store } from './persistence_manager'
+import Skybox from './skybox'
 
 const width = 600;
 const height = 500;
@@ -70,8 +71,6 @@ const stats = new PlayerStatus(100);
 inventory.deserialize();
 
 ///tmp for testing
-const skygeo = new THREE.CubeGeometry(500, 500, 500);
-const skymat = get_material('nightsky-moon');
 let skybox = null;
 
 ///overlay business is given to the player, and persisted
@@ -82,13 +81,14 @@ let tc = null;
 const switch_level = function(info) {
     if(player) player.destroy();
     player = null;
+    if(skybox) skybox.destroy();
+    skybox = null;
     if(grid) {
         grid.scene = null;
         overlay.grid = null;
         grid = null;
     }
     light = null;
-    skybox = null;
 
     grid = level_loader.load_level(info.to);
     overlay.grid = grid;
@@ -102,9 +102,9 @@ const switch_level = function(info) {
     player = new player_class(grid, info.player_pos, inventory, info.player_facing, stats, overlay);
     light = new THREE.AmbientLight( 0xA9BEA9 );
     grid.scene.add( light );
-    skybox = new THREE.Mesh(skygeo, skymat);
-    skybox.position.y = 0;
-    grid.scene.add(skybox);
+
+    if(grid.level.skybox_mats)
+        skybox = new Skybox(grid, grid.level.skybox_mats);
 
     grid.set_scene_change_callback(switch_level);
 

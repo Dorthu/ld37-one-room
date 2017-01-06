@@ -9,6 +9,7 @@ class Level {
 
         this.player_start = data['player_start'];
         this.persisted_values = data['persisted'];
+        this.skybox_mats = data['skybox_mats'];
 
         if(data['events']) {
             this.event_listener = new EventListener(this.grid, data['events']);

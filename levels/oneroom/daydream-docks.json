@@ -474,5 +474,6 @@
             "dialog": "get-coffee",
             "once": true
         }
-    }
+    },
+    "skybox_mats": [ "nightsky", "nightsky", "nightsky", "nightsky", "nightsky", "nightsky-moon" ]
 }
