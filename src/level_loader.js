@@ -25,6 +25,7 @@ import CubeWall from './game/cube_wall'
 import SpriteObject from './sprite_object'
 import DoubleCubeWall from './game/double_cube_wall'
 import ConditionalEventPickup from './game/conditional_event_pickup'
+import DropWall from './game/drop_wall'
 
 export const obj_map = {
     'space':    Space,
@@ -51,6 +52,7 @@ export const obj_map = {
     'double_cube_wall': DoubleCubeWall,
     'sprite': SpriteObject,
     'cepickup': ConditionalEventPickup,
+    'dwall': DropWall,
 }
 
 ///why is this a class?

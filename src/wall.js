@@ -7,12 +7,18 @@ class Wall extends SolidObject {
     constructor(grid, loc, mats, desc, extra) {
         super(grid, loc, mats, desc, extra);
 
-        let m = get_material(mats[0]);
+        const lmats = [];
+        let m = null;
+        for(let i=0; i<4; i++) {
+            if(i < mats.length) {  m = get_material(mats[i]); }
+            lmats.push(m);
+        }
+
         this.meshes = [
-            new THREE.Mesh(geo, m),
-            new THREE.Mesh(geo, m),
-            new THREE.Mesh(geo, m),
-            new THREE.Mesh(geo, m)
+            new THREE.Mesh(geo, lmats[0]),
+            new THREE.Mesh(geo, lmats[1]),
+            new THREE.Mesh(geo, lmats[2]),
+            new THREE.Mesh(geo, lmats[3])
         ];
 
         for (let i=0; i<4; i++) {
