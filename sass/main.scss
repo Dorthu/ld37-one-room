@@ -1,4 +1,5 @@
 $body_bg: lightgrey;
+$touch-button-width: 200;
 
 body {
     background-color: $body_bg;
@@ -141,6 +142,31 @@ body {
                 color: white;
             }
         }
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .touch-button {
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #touch-left, #touch-right {
+        width: $touch-button-width;
+        height: $touch-button-width;
+    }
+
+    #touch-up, #touch-down {
+        width: $touch-button-width;
+        height: $touch-button-width/2;
+    }
+
+    #touch-space {
+        margin-top: $touch-button-width;
+        width: $touch-button-width*3;
+        height: $touch-button-width/2;
     }
 }
 
