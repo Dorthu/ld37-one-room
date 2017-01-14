@@ -19,6 +19,7 @@ import GameTurnController from './game/turn_controller'
 import DialogChoice from './game/dialog_choice'
 import { store_init, store_get_global, clear_store } from './persistence_manager'
 import Skybox from './skybox'
+import TouchControls from './touch-controls'
 
 const width = 600;
 const height = 500;
@@ -41,6 +42,8 @@ but.onclick=function() {
 const bli = document.createElement("li");
 bli.appendChild(but);
 document.getElementById("menu").appendChild(bli);
+
+const touch_controls = new TouchControls('touch-controls');
 
 const renderer = new THREE.WebGLRenderer(assign({
     canvas: canvas
