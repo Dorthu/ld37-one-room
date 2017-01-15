@@ -21,6 +21,8 @@ import { store_init, store_get_global, clear_store } from './persistence_manager
 import Skybox from './skybox'
 import TouchControls from './touch-controls'
 
+console.log("i did a thing");
+
 const width = 600;
 const height = 500;
 

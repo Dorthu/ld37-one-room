@@ -1,4 +1,6 @@
 $body_bg: lightgrey;
+$canvas-width: 600;
+$canvas-height: 500;
 $touch-button-width: 200;
 
 body {
@@ -144,29 +146,44 @@ body {
         }
     }
 
-    .float-left {
-        float: left;
-    }
-
     .touch-button {
         border: 1px solid grey;
         border-radius: 5px;
+        position: absolute;
+        font-size: 30;
+        text-align: center;
+        vertical-align: middle;
     }
 
     #touch-left, #touch-right {
-        width: $touch-button-width;
-        height: $touch-button-width;
+        width: $canvas-width / 3;
+        height: $canvas-width / 3;
+    }
+
+    #touch-left {
+        top: 0;
+        left: 0;
+    }
+
+    #touch-down {
+        top: $canvas-width/6;
+    }
+
+    #touch-right {
+        left: $canvas-width / 3 * 2;
     }
 
     #touch-up, #touch-down {
-        width: $touch-button-width;
-        height: $touch-button-width/2;
+        left: $canvas-width/3;
+        width: $canvas-width / 3;
+        height: $canvas-width / 6;
     }
 
     #touch-space {
-        margin-top: $touch-button-width;
-        width: $touch-button-width*3;
-        height: $touch-button-width/2;
+        top: $canvas-width/3;
+        left: 0;
+        width: $canvas-width;
+        height: $canvas-width/6;
     }
 }
 
