@@ -53,7 +53,21 @@ class TouchControls {
         let ent = document.createEvent("KeyboardEvent");
         const initMethod = typeof ent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
 
+        // Chromium Hack
+        Object.defineProperty(ent, 'keyCode', {
+                    get : function() {
+                        return this.keyCodeVal;
+                    }
+        });
+        Object.defineProperty(ent, 'which', {
+                    get : function() {
+                        return this.keyCodeVal;
+                    }
+        });
+
+
         ent[initMethod]("keydown", true, true, window, false, false, false, false, keycode, 0);
+        ent.keyCodeVal = keycode;
         document.dispatchEvent(ent);
     }
 }
