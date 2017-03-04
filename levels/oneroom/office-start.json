@@ -120,6 +120,9 @@
             { "msg": "Oh great, we're out of coffee." },
             { "type": "event", "target": "transition_level", "detail": { "to": "/levels/oneroom/daydream-docks",
                 "player_pos": { "x": 8, "z": 14 }, "player_facing": 1 } }
+        ],
+        "coffee-desc": [
+            { "msg": "I should get the phone first.." }
         ]
     },
     "events": {
@@ -137,7 +140,11 @@
             "type": "dialog",
             "dialog": "no-coffee",
             "once": true,
-            "requirements": [ "phone-call" ]
+            "requirements": [ { "event": "phone-call", "else": "coffee-desc" } ]
+        },
+        "coffee-desc": {
+            "type": "dialog",
+            "dialog": "coffee-desc"
         }
     }
 }

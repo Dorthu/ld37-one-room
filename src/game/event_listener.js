@@ -19,7 +19,16 @@ class EventListener {
 
         if(cur['requirements']) {
             for(let r of cur.requirements) {
-                if(!store_get(r)) { return; }
+                if(typeof(r) == 'string') {
+                    if(!store_get(r)) { return; }
+                } else {
+                    if(!store_get(r['event'])) {
+                        if(r['else']) {
+                            this.grid.event_manager.dispatchArbitrary(r['else']);
+                            return;
+                        }
+                    }
+                }
             }
         }
 
