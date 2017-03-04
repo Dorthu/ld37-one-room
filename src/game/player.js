@@ -1,6 +1,7 @@
 import Player from '../player'
 import PlayerStatus from './status'
 import { shoot, push } from './attacks'
+import AI from './ai'
 
 class GamePlayer extends Player {
     constructor(grid, loc, inventory, facing=0, stats, overlay) {
@@ -46,7 +47,9 @@ class GamePlayer extends Player {
         if(!target) { return; }
 
         if(target.object) {
-            if(target.object.usable) {
+            if(target.object instanceof AI) {
+                push(this);
+            } else if(target.object.usable) {
                 target.object.use(this);
             } else if(target.object.desc) {
                 this.show_desc(target.object);
