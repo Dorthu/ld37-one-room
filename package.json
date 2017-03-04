@@ -27,7 +27,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo 'no tests'"
+    "test": "echo 'no tests'",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

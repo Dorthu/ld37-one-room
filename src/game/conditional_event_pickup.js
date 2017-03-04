@@ -9,6 +9,8 @@ class ConditionalEventPickup extends ConditionalPickup {
     }
 
     use(player) {
+        if(this.hidden) { return; }
+
         if(this.unset_on_use) {
             this.grid.level.set_value(this.condition, false);
         }

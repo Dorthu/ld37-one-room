@@ -37,7 +37,7 @@
             {"type":"wall","mats":["office-wall"]}],
         [null,{"type":"wall","mats":["office-wall"]},
             {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
-                {"type":"fobj","mats":["office-counter-coffee","drop_ceiling"],"extra":{"zways":true, "trigger":"no-coffee"}}}},
+                {"type":"fobj","mats":["office-counter-coffee","drop_ceiling"],"extra":{"zways":true, "trigger":"no-coffee"},"desc":"Let me get to my desk fisrt.."}}},
             {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
             {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "x"}}}},
             {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"double_cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},

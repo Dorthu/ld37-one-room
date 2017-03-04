@@ -30,6 +30,7 @@ class ConditionalPickup extends Pickup {
     }
 
     use(player) {
+        if(this.hidden) { return; } /// can't use if we're hidden
         super.use(player);
         if(this.unset_on_use) {
             this.grid.level.set_value(this.condition, false);

@@ -10,7 +10,6 @@ class EventSpace extends Space {
     }
 
     trigger(event) {
-        console.log("hit espace");
         if(!this.skip && event.detail.loc.x == this.loc.x && event.detail.loc.z == this.loc.z) {
             this.grid.event_manager.dispatchArbitrary(this.event, this.event_data);
             
