@@ -1,6 +1,6 @@
 import Player from '../player'
 import PlayerStatus from './status'
-import { shoot, push } from './attacks'
+import { shoot, push, find_target_linear } from './attacks'
 import AI from './ai'
 
 class GamePlayer extends Player {
@@ -40,20 +40,40 @@ class GamePlayer extends Player {
         this.overlay.add_dialog([ { "msg": obj.desc } ]);
     }
 
+    _enemies_exist() {
+        return this.grid.event_manager.lists['ai_turn'];
+    }
+
     context_do() {
         let tpos = this._point_in_front()
         let target = this.grid.get(tpos.x, tpos.z);
+
+        console.log(this._enemies_exist() &&
+                    find_target_linear(this.grid, tpos,
+                            { x: this.loc.x - tpos.x, z: this.loc.z - tpos.z }));
 
         if(!target) { return; }
 
         if(target.object) {
             if(target.object instanceof AI) {
+                console.log('push');
                 push(this);
             } else if(target.object.usable) {
                 target.object.use(this);
+            } else if(this._enemies_exist() &&
+                    find_target_linear(this.grid, tpos,
+                            { x: this.loc.x - tpos.x, z: this.loc.z - tpos.z })) {
+                ///if there are enemies, I have a ranged weapon and I have a target
+                ///this is duped below
+                shoot(this);
             } else if(target.object.desc) {
                 this.show_desc(target.object);
             }
+        } else if(this._enemies_exist() &&
+                find_target_linear(this.grid, tpos,
+                        { x: this.loc.x - tpos.x, z: this.loc.z - tpos.z })) {
+            ///if there are enemies, I have a ranged weapon and I have a target
+            shoot(this);
         } else if(target.desc) {
             this.show_desc(target);
         }

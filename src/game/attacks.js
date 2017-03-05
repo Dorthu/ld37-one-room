@@ -7,7 +7,7 @@ function find_target_immediate(grid, loc) {
     }
 }
 
-function find_target_linear(grid, start, dir) {
+export function find_target_linear(grid, start, dir) {
     let c = start;
     while(true) {
         let o = grid.get(c.x, c.z);
@@ -26,18 +26,11 @@ function getRandomInt(min, max) {
 
 /// shooting attack hook - below helpers are not exported
 export function shoot(player) {
-    if(player.stats.chambers.value > 0) {
-        player.overlay.add('shoot-up', e => shoot_lower(player));
-    } else {
-        player.logbox.add_message("no ammo");
-        player.stats.update(true);
-    }
+    ///no ammo for ranged weapon in this game
+    player.overlay.add('shoot-up', e => shoot_lower(player));
 }
 
 function shoot_lower(player) {
-    ///decrease ammo and animate chambers
-    player.stats.chambers.value -= 1;
-    player.stats.update(true);
     ///do damage
     let pif = player._point_in_front();
     let hit = find_target_linear(player.grid, pif, { x: player.loc.x - pif.x, z: player.loc.z - pif.z });
