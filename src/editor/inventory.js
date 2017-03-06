@@ -17,26 +17,86 @@ class EditorInventory extends Inventory {
             editor_options.push({ label: "material::"+c, value: 'mat::'+c});
         }
 
-        this.slot2 = false;
+        this.slot = 0;
         this.searchbox = null;
         this.player = null;
         this.current = null;
-        this.cmat1 = null;
-        this.cmat2 = null;
+        this.cmats = [];
+        this.pad_to_4();
+        this.extra = null;
+        this.desc = null;
+    }
+
+    clear() {
+        ///clear out mats
+        this.cmats=[];
+        this.pad_to_4();
+        this.slot=0;
+        this.desc=null;
+        this.extra=null;
+        this.update();_
+    }
+
+    pad_to_4() {
+        /// the cmats array needs to have 4 things in it alwasy, so
+        /// this pads it out with nulls
+        if(this.cmats.length > 3) { return; }
+        for(let c=this.cmats.length; c<4; c++) {
+            this.cmats[c] = null;
+        }
+    }
+
+    filtered_mats() {
+        ///returns this.cmats minus all null materials
+        let m = [];
+        for(let c of this.cmats) {
+            if(c) { m.push(c); }
+        }
+        return m;
     }
 
     update() {
         let serial = '';
         serial += '<p>Object: ' + (this.current ? this.current : 'None') + '</p>';
-        serial += '<p>' + (this.slot2 ? '' : '>') + 'Mat1: ' + (this.cmat1 ? this.cmat1 : 'None') + '</p>';
-        serial += '<p>' + (this.slot2 ? '>' : '') + 'Mat2: ' + (this.cmat2 ? this.cmat2 : 'None') + '</p>';
+        for(let c = 0; c < 4; c++) {
+            serial += '<p>' + (this.slot == c ? '>' : '' ) + `Mat${c+1}:` + (this.cmats[c]) + '</p>';
+        }
+        serial += '<p>Description: '+this.desc+'</p>';
 
         this.equipe.innerHTML=serial;
     }
 
     toggle_slot() {
-        this.slot2 = !this.slot2;
+        this.slot++;
+        if(this.slot > 3) { this.slot = 0; }
         this.update();
+    }
+
+    description_macro(player) {
+        this.player = player;
+
+        let i = document.createElement('input');
+        i.id = 'searchbox';
+        i.className = 'input-lg';
+        i.type = 'text';
+        i.placeholder = 'Enter Description';
+
+        let s = document.createElement('span');
+        s.className = 'editor-search';
+        s.appendChild(i);
+        document.body.appendChild(s);
+        i.focus();
+
+        this.searchbox = s;
+
+        i.onkeydown = (ent) => {
+            if(ent.keyCode == 13) { ///enter
+                this.desc = i.value;
+                if(this.desc == '') { this.desc = null; }
+                this.hide_search();
+                this.update();
+            }
+        }
     }
 
     search_macro(player) {
@@ -81,12 +141,7 @@ class EditorInventory extends Inventory {
                     this.current = parts[1];
                 } else if(parts[0] == 'mat') {
                     ///selected a material
-                    if(this.slot2) {
-                        this.cmat2 = parts[1];
-                        this.slot2 = false;
-                    } else {
-                        this.cmat1 = parts[1];
-                    }
+                    this.cmats[this.slot] = parts[1];
                 }
                 this.update();
             }

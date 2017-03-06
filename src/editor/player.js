@@ -3,7 +3,7 @@
 */
 import Player from '../player'
 import { obj_map } from '../level_loader'
-import LevelSerializer from './level_serializer'
+import { LevelSerializer, rev_map } from './level_serializer'
 import SpriteObject from '../sprite_object'
 
 import { THREE } from '../Three'
@@ -32,14 +32,19 @@ class EditorPlayer extends Player {
         this.grid.scene.add(this.visual_grid);
     }
 
-    get() {
+    get(object=true) {
+        this.inventory.extra = null; ///clear out extra
         let target = this._point_in_front();
         let o = this.grid.get(target.x, target.z);
         if(o) {
-            if(o['object']) { o = o.object; }
-            this.inventory.current = o.constructor.name.toLowerCase();
-            this.inventory.cmat1 = o._mats[0];
-            this.inventory.cmat2 = ( o._mats.lenght > 1 ? o._mats[1] : null );
+            if(object && o['object']) { o = o.object; }
+            //this.inventory.current = o.constructor.name.toLowerCase();
+            this.inventory.current = rev_map[o.constructor.name];
+            this.inventory.cmats = o._mats;
+            this.inventory.pad_to_4();
+            //this.inventory.cmat1 = o._mats[0];
+            //this.inventory.cmat2 = ( o._mats.lenght > 1 ? o._mats[1] : null );
+            if(object && o.extra) { this.inventory.extra = o.extra; }
             this.inventory.update();
         }
     }
@@ -85,7 +90,7 @@ class EditorPlayer extends Player {
     flood_fill(node, target_obj, target_color) {
         let o = this.grid.get(node.x, node.z);
         if(!o || o.constructor.name != target_obj
-            || o._mats[0] == this.inventory.cmat1
+            || o._mats[0] == this.inventory.cmats[0]
             || o._mats[0] != target_color) {
                 return;
         }
@@ -114,7 +119,7 @@ class EditorPlayer extends Player {
             }
 
             if(o.constructor.name != target_obj || o._mats[0] != target_mat
-                    || o._mats[0] == self.inventory.cmat1) {
+                    || o._mats[0] == self.inventory.cmats[0]) {
                 return;
             }
 
@@ -168,15 +173,15 @@ class EditorPlayer extends Player {
     make(target) {
         let ci = this.inventory.current;
         if(!ci) { console.log('no tiles selected'); return; }
-        let mats = [ this.inventory.cmat1, this.inventory.cmat2 ];
+        let mats = this.inventory.filtered_mats(); ///don't leave trailing null mats
         if(obj_map[ci] && obj_map[ci].occupies()) {
             let c = this.grid.get(target.x, target.z);
             if(c) {
-                c.object = c.make_object(ci, mats, null, null);
+                c.object = c.make_object(ci, mats, this.inventory.desc, this.inventory.extra);
             }
         } else {
             let o = this.grid.create(obj_map[ci],
-               target, mats, 'editor created this');
+               target, mats, null);
         }
     }
 
@@ -213,23 +218,31 @@ class EditorPlayer extends Player {
             this.command.push(String.fromCharCode(event.keyCode));
         }else if(event.keyCode == 32) {
             this.do_command(e => this.make(e));
-        } else if(event.keyCode == 68) {
+        } else if(event.keyCode == 68) { ///d
             this.do_command(e => this.remove(e));
         } else if(event.keyCode == 90) {
             this.do_command(e => this.set_desc(e));
+        } else if(event.keyCode == 85) { ///u
+            event.preventDefault();
+            this.inv_mode=true;
+            this.inventory.description_macro(this);
         } else if(event.keyCode == 84) {
             this.toggle_bit('solid');
-        } else if(event.keyCode == 83) {
+        } else if(event.keyCode == 83) { ///s
             new LevelSerializer(this.grid).serialize_level();
+        } else if(event.keyCode == 67) { ///c
+            this.inventory.clear();
         } else if(event.keyCode == 81) {
             this.inventory.toggle_slot();
-        } else if(event.keyCode == 71) {
+        } else if(event.keyCode == 71) { ///g
             this.get();
+        } else if(event.keyCode == 72) { ///h
+            this.get(false); ///this is get the space always
         } else if(event.keyCode == 76) {
             this.visual_grid.visible = !this.visual_grid.visible;
         } else if(event.keyCode == 27) {
             this.command = [];
-        } else if(event.keyCode == 69) {
+        } else if(event.keyCode == 69) { ///e
             event.preventDefault();
             this.inv_mode = true;
             this.inventory.search_macro(this);

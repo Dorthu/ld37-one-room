@@ -1,4 +1,4 @@
-let rev_map = {};
+export let rev_map = {};
 
 export function init_serializer(map) {
     for(let e of Object.keys(map)) {

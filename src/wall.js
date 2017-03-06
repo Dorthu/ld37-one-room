@@ -7,6 +7,12 @@ class Wall extends SolidObject {
     constructor(grid, loc, mats, desc, extra) {
         super(grid, loc, mats, desc, extra);
 
+        ///filter null mats off the end of the wall - this helps the editor
+        for(let c = mats.length-1; c>0; c--) {
+            if(mats[c] === null) {
+                mats.splice(c, 1);
+            }
+        }
         const lmats = [];
         let m = null;
         for(let i=0; i<4; i++) {
