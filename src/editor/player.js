@@ -5,6 +5,7 @@ import Player from '../player'
 import { obj_map } from '../level_loader'
 import { LevelSerializer, rev_map } from './level_serializer'
 import SpriteObject from '../sprite_object'
+import PerciseEditor from './percise_editor'
 
 import { THREE } from '../Three'
 import assign from 'object-assign'
@@ -206,6 +207,25 @@ class EditorPlayer extends Player {
         }
     }
 
+    percise_editor() {
+        /*
+         This turns on the percise mode for tweaking specific aspects of
+         the object in front of you.  This prevents movement until q is pressed.
+        */
+        this.inv_mode=true;
+
+        let target = this._point_in_front();
+        let o = this.grid.get(target.x, target.z);
+
+        if(!o) { this.inv_mode = false; return; }
+
+        o = o.object;
+        if(!o) { this.inv_mode = false; return; }
+        console.log(`in percise mode for ${o}`);
+
+        this.pe = new PerciseEditor(this, o);
+    }
+
     input(event) {
         if(this.inv_mode) {
             if(event.keyCode == 27) {
@@ -222,6 +242,8 @@ class EditorPlayer extends Player {
             this.do_command(e => this.remove(e));
         } else if(event.keyCode == 90) {
             this.do_command(e => this.set_desc(e));
+        } else if(event.keyCode == 75) { ///k
+            this.percise_editor();
         } else if(event.keyCode == 85) { ///u
             event.preventDefault();
             this.inv_mode=true;
