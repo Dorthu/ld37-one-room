@@ -7,8 +7,7 @@ export default class PerciseEditor {
         if(!this.extra['offset-x']) this.extra['offset-x'] = 0;
         if(!this.extra['offset-y']) this.extra['offset-y'] = 0;
         if(!this.extra['offset-z']) this.extra['offset-z'] = 0;
-
-        console.log(this.target);
+        if(!this.extra['rot']) this.extra['rot'] = 0;
 
         this.listener = ent => this.input(ent)
         document.addEventListener('keydown', this.listener);
@@ -21,7 +20,7 @@ export default class PerciseEditor {
     }
 
     destroy() {
-        document.removeEventListener(this.listener);
+        document.removeEventListener('keydown', this.listener);
     }
 
     input(event) {
@@ -31,16 +30,22 @@ export default class PerciseEditor {
         }
 
         if(event.keyCode == 38) { /// up arrow
-            this.extra['offset-x'] += .2;
+            this.extra['offset-x'] += .1;
             this._update();
         } else if(event.keyCode == 40) { /// down arrow
-            this.extra['offset-x'] -= .2;
+            this.extra['offset-x'] -= .1;
             this._update();
         } else if(event.keyCode == 37) { /// left arrow
-            this.extra['offset-z'] += .2;
+            this.extra['offset-z'] += .1;
             this._update();
         } else if(event.keyCode == 39) { /// right arrow
-            this.extra['offset-z'] -= .2;
+            this.extra['offset-z'] -= .1;
+            this._update();
+        } else if(event.keyCode == 188) { /// <
+            this.extra['rot'] -= .1;
+            this._update();
+        } else if(event.keyCode == 190) { /// >
+            this.extra['rot'] += .1;
             this._update();
         }
     }

@@ -65,7 +65,7 @@ class GridObject {
             }
 
             if(this.extra['rot']) {
-                this.meshes[0].rotation.y += this.extra['rot'];
+                this.meshes[0].rotation.y = this.extra['rot'];
             }
 
             if(this.extra['offset-x']) {

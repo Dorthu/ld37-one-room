@@ -221,9 +221,8 @@ class EditorPlayer extends Player {
 
         o = o.object;
         if(!o) { this.inv_mode = false; return; }
-        console.log(`in percise mode for ${o}`);
 
-        this.pe = new PerciseEditor(this, o);
+        new PerciseEditor(this, o);
     }
 
     input(event) {
