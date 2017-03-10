@@ -44,12 +44,29 @@ export default class PerciseEditor {
     }
 
     description_macro() {
+        this.show_focus_box( v => {
+            this.target.desc = v;
+            if(this.target.desc == '') this.target.desc = null;
+        }, 'Enter Description', this.target.desc);
+    }
 
+    set_value_for_key() {
+        this.show_focus_box( v => {
+            if(v.indexOf(':') == -1) { return; }
+
+            let [ key, value ] = v.split(':');
+            this.extra[key.trim()] = value.trim();
+            this._update();
+        }, 'key: value', null);
+    }
+
+    show_focus_box(callback, placeholder, initial_value) {
         let i = document.createElement('input');
         i.id = 'searchbox';
         i.className = 'input-lg';
         i.type = 'text';
-        i.placeholder = 'Enter Description';
+        i.placeholder = placeholder;
+        i.value = initial_value ? initial_value : null;
 
         let s = document.createElement('span');
         s.className = 'editor-search';
@@ -61,8 +78,7 @@ export default class PerciseEditor {
 
         i.onkeydown = (ent) => {
             if(ent.keyCode == 13) { ///enter
-                this.target.desc = i.value;
-                if(this.target.desc == '') { this.target.desc = null; }
+                callback(i.value);
                 this.hide_focus_box();
             }
         }
@@ -110,6 +126,9 @@ export default class PerciseEditor {
         } else if(event.keyCode == 68) { /// d
             event.preventDefault();
             this.description_macro();
+        } else if(event.keyCode == 69) { /// e
+            event.preventDefault();
+            this.set_value_for_key();
         }
     }
 }
