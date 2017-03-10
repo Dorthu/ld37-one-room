@@ -178,7 +178,7 @@ class EditorPlayer extends Player {
         if(obj_map[ci] && obj_map[ci].occupies()) {
             let c = this.grid.get(target.x, target.z);
             if(c) {
-                c.object = c.make_object(ci, mats, this.inventory.desc, this.inventory.extra);
+                c.object = c.make_object(ci, mats, null, this.inventory.extra);
             }
         } else {
             let o = this.grid.create(obj_map[ci],
@@ -188,11 +188,6 @@ class EditorPlayer extends Player {
 
     remove(target) {
         this.grid.remove(target.x, target.z);
-    }
-
-    set_desc(target) {
-        let i = window.prompt("Enter description");
-        this.grid.get(target.x, target.z).desc = i;
     }
 
     toggle_bit(bit) {
@@ -239,14 +234,8 @@ class EditorPlayer extends Player {
             this.do_command(e => this.make(e));
         } else if(event.keyCode == 68) { ///d
             this.do_command(e => this.remove(e));
-        } else if(event.keyCode == 90) {
-            this.do_command(e => this.set_desc(e));
         } else if(event.keyCode == 75) { ///k
             this.percise_editor();
-        } else if(event.keyCode == 85) { ///u
-            event.preventDefault();
-            this.inv_mode=true;
-            this.inventory.description_macro(this);
         } else if(event.keyCode == 84) {
             this.toggle_bit('solid');
         } else if(event.keyCode == 83) { ///s

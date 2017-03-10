@@ -24,7 +24,6 @@ class EditorInventory extends Inventory {
         this.cmats = [];
         this.pad_to_4();
         this.extra = null;
-        this.desc = null;
     }
 
     clear() {
@@ -32,7 +31,6 @@ class EditorInventory extends Inventory {
         this.cmats=[];
         this.pad_to_4();
         this.slot=0;
-        this.desc=null;
         this.extra=null;
         this.update();_
     }
@@ -61,7 +59,6 @@ class EditorInventory extends Inventory {
         for(let c = 0; c < 4; c++) {
             serial += '<p>' + (this.slot == c ? '>' : '' ) + `Mat${c+1}:` + (this.cmats[c]) + '</p>';
         }
-        serial += '<p>Description: '+this.desc+'</p>';
 
         this.equipe.innerHTML=serial;
     }
@@ -70,33 +67,6 @@ class EditorInventory extends Inventory {
         this.slot++;
         if(this.slot > 3) { this.slot = 0; }
         this.update();
-    }
-
-    description_macro(player) {
-        this.player = player;
-
-        let i = document.createElement('input');
-        i.id = 'searchbox';
-        i.className = 'input-lg';
-        i.type = 'text';
-        i.placeholder = 'Enter Description';
-
-        let s = document.createElement('span');
-        s.className = 'editor-search';
-        s.appendChild(i);
-        document.body.appendChild(s);
-        i.focus();
-
-        this.searchbox = s;
-
-        i.onkeydown = (ent) => {
-            if(ent.keyCode == 13) { ///enter
-                this.desc = i.value;
-                if(this.desc == '') { this.desc = null; }
-                this.hide_search();
-                this.update();
-            }
-        }
     }
 
     search_macro(player) {
