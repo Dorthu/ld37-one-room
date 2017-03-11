@@ -19,13 +19,18 @@ class FlatObject extends SolidObject {
         this.meshes[0].position.x = c.x;
         this.meshes[0].position.z = c.z;
 
-        if(this.extra && this.extra.zways) {
-            this.meshes[0].rotation.y = Math.PI / 2;
-        }
-
         this.grid.scene.add(this.meshes[0]);
 
         this._fine_tune();
+    }
+
+    _fine_tune() {
+        super._fine_tune();
+
+        if(this.extra && this.extra.zways) {
+            this.meshes[0].rotation.y += Math.PI / 2;
+        }
+
     }
 
     static occupies() { return true; }

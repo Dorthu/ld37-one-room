@@ -9,6 +9,7 @@ export default class PerciseEditor {
         this.target_name =  rev_map[this.target.constructor.name];
 
         this.extra = target.extra;
+        if(!this.extra) this.extra = {};
         if(!this.extra['offset-x']) this.extra['offset-x'] = 0;
         if(!this.extra['offset-y']) this.extra['offset-y'] = 0;
         if(!this.extra['offset-z']) this.extra['offset-z'] = 0;

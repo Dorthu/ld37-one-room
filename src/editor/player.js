@@ -3,7 +3,7 @@
 */
 import Player from '../player'
 import { obj_map } from '../level_loader'
-import { LevelSerializer, rev_map } from './level_serializer'
+import LevelSerializer,  { rev_map } from './level_serializer'
 import SpriteObject from '../sprite_object'
 import PerciseEditor from './percise_editor'
 

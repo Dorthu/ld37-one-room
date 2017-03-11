@@ -15,17 +15,24 @@ class LevelSerializer {
         let serial = {
             type: rev_map[obj.constructor.name],
             mats: obj._mats,
-            desc: obj.desc
+            desc: obj.desc,
+            extra: obj.extra
         };
         if(obj['object']) {
-            serial['extra'] = {
-                object: {
-                    type: rev_map[obj.object.constructor.name],
-                    mats: obj.object._mats,
-                    desc: obj.object.desc
-                }
+            let object = {
+                type: rev_map[obj.object.constructor.name],
+                mats: obj.object._mats,
+                desc: obj.object.desc,
+                extra: obj.object.extra
             };
+
+            if(!object['desc']) { delete object['desc']; }
+            if(!object['extra']) { delete object['extra']; }
+
+            serial['extra'] = { object: object };
         }
+        if(!serial['desc']) { delete serial['desc']; }
+        if(!serial['extra']) { delete serial['extra']; }
 
         return serial;
     }
@@ -33,7 +40,8 @@ class LevelSerializer {
     serialize_level() {
         let serial = [];
         for(let x = 0; x < this.grid.grid.length; x++ ) {
-            for(let z = 0; z < this.grid.grid[x].length; z++) {
+            let cglen = this.grid.grid[x] ? this.grid.grid[x].length : 0;
+            for(let z = 0; z < cglen; z++) {
                 if(!this.grid.grid[x][z]) { continue; }
                 if(!serial[z]) { serial[z] = []; }
                 serial[z][x] = this.serialize(this.grid.grid[x][z]);
