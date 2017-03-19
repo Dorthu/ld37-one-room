@@ -48,9 +48,7 @@ class LevelSerializer {
             }
         }
 
-        let e = document.createElement("div");
-        e.innerHTML = "<pre>" +JSON.stringify(serial)+"</pre>";
-        document.body.appendChild(e);
+        return serial;
     }
 }
 

@@ -6,6 +6,7 @@ import { obj_map } from '../level_loader'
 import LevelSerializer,  { rev_map } from './level_serializer'
 import SpriteObject from '../sprite_object'
 import PerciseEditor from './percise_editor'
+import { store_set, store_get } from '../persistence_manager'
 
 import { THREE } from '../Three'
 import assign from 'object-assign'
@@ -220,6 +221,21 @@ class EditorPlayer extends Player {
         new PerciseEditor(this, o);
     }
 
+    serialize_to_user() {
+        let serial = new LevelSerializer(this.grid).serialize_level();
+
+        let e = document.createElement("div");
+        e.innerHTML = "<pre>" +JSON.stringify(serial)+"</pre>";
+        document.body.appendChild(e);
+    }
+
+    _save_level() {
+        const serial = new LevelSerializer(this.grid).serialize_level();
+        const serial_str = JSON.stringify(serial);
+
+        store_set('level_bkp', serial_str);
+    }
+
     input(event) {
         if(this.inv_mode) {
             if(event.keyCode == 27) {
@@ -228,6 +244,8 @@ class EditorPlayer extends Player {
             }
             return;
         }
+        let prevent_save = false;
+
         if(command_keycodes.includes(event.keyCode)) {
             this.command.push(String.fromCharCode(event.keyCode));
         }else if(event.keyCode == 32) {
@@ -239,16 +257,26 @@ class EditorPlayer extends Player {
         } else if(event.keyCode == 84) {
             this.toggle_bit('solid');
         } else if(event.keyCode == 83) { ///s
-            new LevelSerializer(this.grid).serialize_level();
+            this.serialize_to_user();
         } else if(event.keyCode == 67) { ///c
             this.inventory.clear();
+            prevent_save = true;
         } else if(event.keyCode == 81) {
             this.inventory.toggle_slot();
+            prevent_save = true;
         } else if(event.keyCode == 71) { ///g
             this.get();
+            prevent_save = true;
         } else if(event.keyCode == 72) { ///h
             this.get(false); ///this is get the space always
-        } else if(event.keyCode == 76) {
+            prevent_save = true;
+        } else if(event.keyCode == 76) { ///l
+            let level = prompt('Level URL:');
+            const e = { detail: { data: { to: level, player_pos: this.loc } } };
+
+            this.grid.transition(e);
+            prevent_save = true;
+        } else if(event.keyCode == 186) { ///;
             this.visual_grid.visible = !this.visual_grid.visible;
         } else if(event.keyCode == 27) {
             this.command = [];
@@ -256,9 +284,20 @@ class EditorPlayer extends Player {
             event.preventDefault();
             this.inv_mode = true;
             this.inventory.search_macro(this);
+            prevent_save = true;
+        } else if(event.keyCode == 187) { ///=
+            const json_string = store_get('level_bkp');
+            const json = JSON.parse(json_string);
+            const e = { detail: { data: { to: json, player_pos: this.loc } } }; /// fake event for loading
+
+            this.grid.transition(e); /// event 
+            prevent_save = true;
         } else {
+            prevent_save = true;
             super.input(event);
         }
+
+        if(!prevent_save) this._save_level();
     }
 }
 

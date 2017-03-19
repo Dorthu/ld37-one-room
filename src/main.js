@@ -21,8 +21,6 @@ import { store_init, store_get_global, clear_store } from './persistence_manager
 import Skybox from './skybox'
 import TouchControls from './touch-controls'
 
-console.log("i did a thing");
-
 const width = 600;
 const height = 500;
 
@@ -108,7 +106,7 @@ const switch_level = function(info) {
     light = new THREE.AmbientLight( 0xA9BEA9 );
     grid.scene.add( light );
 
-    if(grid.level.skybox_mats)
+    if(grid.level && grid.level.skybox_mats)
         skybox = new Skybox(grid, grid.level.skybox_mats);
 
     grid.set_scene_change_callback(switch_level);

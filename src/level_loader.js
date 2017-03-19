@@ -74,7 +74,7 @@ class LevelLoader {
     }
 
     load_level(uri) {
-        let all_data = this._get_level(uri);
+        let all_data = typeof(uri) === 'object' ? uri :  this._get_level(uri);
 
         let data = all_data;
         if(data.constructor != Array && all_data['level']) {
