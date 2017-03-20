@@ -21,12 +21,20 @@ class EventListener {
             for(let r of cur.requirements) {
                 if(typeof(r) == 'string') {
                     if(!store_get(r)) { return; }
-                } else {
+                } else if(!r['type'] || r['type'] == 'event') {
                     if(!store_get(r['event'])) {
                         if(r['else']) {
                             this.grid.event_manager.dispatchArbitrary(r['else']);
-                            return;
+                            return; /// TODO - does this break requirements with no else?
                         }
+                    }
+                } else if(r['type'] && r['type'] == 'position') {
+                    if(this.grid.player.loc.x != r['x'] ||
+                            this.grid.player.loc.z != r['z']) {
+                        if(r['else']) {
+                            this.grid.event_manager.dispatchArbitrary(r['else']);
+                        }
+                        return; /// TODO - does this break requirements with no else?
                     }
                 }
             }

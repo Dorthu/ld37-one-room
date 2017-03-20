@@ -123,6 +123,9 @@
         ],
         "coffee-desc": [
             { "msg": "I should get the phone first.." }
+        ],
+        "not-at-desk": [
+            { "msg": "I usually *sit* at my desk, instead of standing beside it.." }
         ]
     },
     "events": {
@@ -134,7 +137,8 @@
         "phone-call": {
             "type": "dialog",
             "dialog": "phone-call",
-            "once": true
+            "once": true,
+            "requirements": [ { "type": "position", "x": 6, "z": 1, "else": "at-desk" } ]
         },
         "no-coffee": {
             "type": "dialog",
@@ -145,6 +149,10 @@
         "coffee-desc": {
             "type": "dialog",
             "dialog": "coffee-desc"
+        },
+        "at-desk": {
+            "type": "dialog",
+            "dialog": "not-at-desk"
         }
     }
 }

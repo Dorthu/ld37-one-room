@@ -48,15 +48,10 @@ class GamePlayer extends Player {
         let tpos = this._point_in_front()
         let target = this.grid.get(tpos.x, tpos.z);
 
-        console.log(this._enemies_exist() &&
-                    find_target_linear(this.grid, tpos,
-                            { x: this.loc.x - tpos.x, z: this.loc.z - tpos.z }));
-
         if(!target) { return; }
 
         if(target.object) {
             if(target.object instanceof AI) {
-                console.log('push');
                 push(this);
             } else if(target.object.usable) {
                 target.object.use(this);
