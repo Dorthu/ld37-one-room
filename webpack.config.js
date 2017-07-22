@@ -10,7 +10,7 @@ module.exports = {
         loaders: [
             { 
               test: /\.js$/,
-              loader: 'babel',
+              loader: 'babel-loader',
               exclude: /(node_modules|bower_components)/,
               query: {
                   plugins: ['transform-runtime'],
@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: "style!css!sass"
+                loader: "style-loader!css-loader!sass-loader"
             }
         ]
     }
